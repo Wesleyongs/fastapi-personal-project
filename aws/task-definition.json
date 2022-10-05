@@ -4,7 +4,7 @@
     ],
     "inferenceAccelerators": [],
     "containerDefinitions": [{
-        "name": "ecs-devops-sandbox",
+        "name": "sample-app",
         "image": "ecs-devops-sandbox-repository:00000",
         "resourceRequirements": null,
         "essential": true,
