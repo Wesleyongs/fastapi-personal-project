@@ -4,7 +4,7 @@
     ],
     "inferenceAccelerators": [],
     "containerDefinitions": [{
-        "name": "sample-app",
+        "name": "authentication",
         "image": "ehttpd:2.4",
         "resourceRequirements": null,
         "essential": true,
