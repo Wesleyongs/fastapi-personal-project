@@ -22,5 +22,9 @@ app.add_middleware(
 async def root():
     return {"message": "Hello! how are u, i am underwater"}
 
+@app.get("/test")
+async def root():
+    return {"message": "This proves that FastAPI routes is not working in deployment mode"}
+
 if __name__ == "__main__":
     uvicorn.run("src.main:app", reload=True)
