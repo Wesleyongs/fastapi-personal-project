@@ -5,7 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 # local
 from src.routes.api import router as api_router
 
-app = FastAPI()
+app = FastAPI(openapi_url='/openapi.json',  # This line solved my issue, in my case it was a lambda function
+              )
 app.include_router(api_router)
 
 origins = ["*"]
@@ -18,9 +19,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 async def root():
     return {"message": "Hello! how are u, i am underwater"}
+
 
 @app.get("/test")
 async def test():
