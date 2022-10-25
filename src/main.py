@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.routes.api import router as api_router
 
 app = FastAPI(openapi_url='/openapi.json',  # This line solved my issue, in my case it was a lambda function
-              )
+              root_path="/ dev")
 app.include_router(api_router)
 
 origins = ["*"]
