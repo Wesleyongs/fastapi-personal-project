@@ -5,8 +5,11 @@ from fastapi.middleware.cors import CORSMiddleware
 # local
 from src.routes.api import router as api_router
 
-app = FastAPI(openapi_url='/openapi.json',  # This line solved my issue, in my case it was a lambda function
-              )
+# New code
+from src.TwoFA import * 
+
+app = FastAPI()
+
 app.include_router(api_router)
 
 origins = ["*"]
@@ -19,7 +22,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 @app.get("/")
 async def root():
     return {"message": "Hello! how are u, i am underwater"}
@@ -28,6 +30,23 @@ async def root():
 @app.get("/test")
 async def test():
     return {"message": "This proves that FastAPI routes is not working in deployment mode"}
+
+@app.get("/2FA")
+def twofa(id, db:Session = Depends(get_db)):
+    """
+    1. Creates 2FA code
+    2. Writes to DB
+    3. Sends via SMS
+    4. Return status 
+    """    
+    return create_2FA(id, db)
+
+@app.get("/2FA/verify")
+def twofa(id, code, db:Session = Depends(get_db)):
+    """
+    """    
+    return verify_twofa(id, code, db)
+
 
 if __name__ == "__main__":
     uvicorn.run("src.main:app", reload=True)
