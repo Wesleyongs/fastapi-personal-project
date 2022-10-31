@@ -73,16 +73,16 @@ def create_2FA(id,to_number, db):
     # send sms
     print(send_otp(code, to_number))
 
-    return "Added to db"
+    return {"status_code":"200", "message":"OTP created and sms sent"}
 
 def verify_twofa(userid, code, db):
     
     user = db.query(TwoFA).get(userid)
     
     if user.code == code and dt.datetime.now() - user.created_date <= dt.timedelta(seconds=60):
-        return "Verified"
+        return {"status_code":"200", "message":"verfied"}
     else:
-        return "incorrect or expired OTP"
+        return {"status_code":"400", "message":"Invalid or expired code"}
 
 def send_otp(code, to_number="+6581633116"):
     load_dotenv()
