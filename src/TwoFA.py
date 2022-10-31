@@ -86,10 +86,8 @@ def verify_twofa(userid, code, db):
 
 def send_otp(code, to_number="+6581633116"):
     load_dotenv()
-    # account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-    # auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-    TWILIO_ACCOUNT_SID="AC19d84261e339456f965f0bfa2f267c82"
-    TWILIO_AUTH_TOKEN="f4d0ae5808cda8047d419625617c7e87"
+    account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+    auth_token = os.getenv('TWILIO_AUTH_TOKEN')
     client = Client(account_sid, auth_token)
 
     message = client.messages \
