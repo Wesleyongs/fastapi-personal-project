@@ -32,14 +32,14 @@ async def test():
     return {"message": "This proves that FastAPI routes is not working in deployment mode"}
 
 @app.get("/2FA")
-def twofa(id, db:Session = Depends(get_db)):
+def twofa(id, to_number="+6581633116", db:Session = Depends(get_db)):
     """
     1. Creates 2FA code
     2. Writes to DB
     3. Sends via SMS
     4. Return status 
     """    
-    return create_2FA(id, db)
+    return create_2FA(id, to_number, db)
 
 @app.get("/2FA/verify")
 def twofa(id, code, db:Session = Depends(get_db)):

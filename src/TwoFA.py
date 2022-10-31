@@ -46,7 +46,7 @@ import os
 from twilio.rest import Client
 from dotenv import load_dotenv
 
-def create_2FA(id, db):
+def create_2FA(id,to_number, db):
 
     # generate 6digit OTP
     secret = pyotp.random_base32()
@@ -71,7 +71,7 @@ def create_2FA(id, db):
     db.commit()
     
     # send sms
-    print(send_otp(code))
+    print(send_otp(code, to_number))
 
     return "Added to db"
 
