@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 from src.database.database import Base
 
 class UrlConversion(Base):
-    __tablename__ = "UrlConversions"
+    __tablename__ = "url_conversion"
 
     input_url = Column(String, primary_key=True, index=True)
     output_url = Column(String)

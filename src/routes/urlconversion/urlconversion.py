@@ -24,14 +24,14 @@ def get_db():
         db.close()
 
 @router.post(
-    "/UrlConversion/", response_model=schemas.UrlConversion, tags=["UrlConversion"]
+    "/", response_model=schemas.UrlConversion, tags=["UrlConversion"]
 )
 def create_url_conversion(input_url, db: Session = Depends(get_db)):
     return crud.create_url_conversion(db=db, input_url=input_url)
 
 
 @router.get(
-    "/UrlConversion/",
+    "/",
     response_model=List[schemas.UrlConversion],
     tags=["UrlConversion"],
 )
@@ -39,6 +39,6 @@ def get_converted_url(db: Session = Depends(get_db)):
     return crud.get_url_conversions(db)
 
 
-@router.delete("/UrlConversion/", response_model=str, tags=["UrlConversion"])
+@router.delete("/", response_model=str, tags=["UrlConversion"])
 def delete_all_url_conversions(db: Session = Depends(get_db)):
     return crud.delete_all_url_conversions(db)
