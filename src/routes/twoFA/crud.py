@@ -32,13 +32,13 @@ def create_2FA(user_id,to_number, db):
     # send sms
     print(send_otp(otp_code, to_number))
 
-    return {"status_code":"200", "message":"OTP created and sms sent"}
+    return {"status_code":200, "message":"OTP created and sms sent"}
 
 def verify_twofa(user_id, otp_code, db):
     
     user = db.query(models.TwoFA).get(user_id)
     
-    if user.otp_code == otp_code and dt.datetime.now() - user.created_date <= dt.timedelta(seconds=60):
+    if int(user.otp_code) == otp_code and (dt.datetime.now() - user.created_date) <= dt.timedelta(seconds=60):
         return {"status_code":"200", "message":"verfied"}
     else:
         return {"status_code":"400", "message":"Invalid or expired code"}

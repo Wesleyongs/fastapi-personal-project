@@ -9,7 +9,7 @@ class TwoFA(Base):
     __tablename__ = 'two_fa'
 
     user_id = Column(Integer, primary_key=True)
-    otp_code = Column(String)
+    otp_code = Column(Integer)
     created_date = Column(DateTime, default=dt.datetime.now)
 
     def __init__(self, **kwds):
