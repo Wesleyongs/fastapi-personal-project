@@ -1,7 +1,7 @@
 {
     "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:058654507205:task-definition/fastapi_personal_project:1",
     "containerDefinitions": [{
-        "name": "fastapi_personal_project",
+        "name": "authentication-service",
         "image": "058654507205.dkr.ecr.ap-southeast-1.amazonaws.com/authentication-service",
         "cpu": 0,
         "links": [],
