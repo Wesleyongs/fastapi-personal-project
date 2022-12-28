@@ -17,8 +17,8 @@ router = APIRouter(
 )
 
 
-@router.get("/", response_model=schemas.TwoFA)
-def twofa(id: int = Query(default=1, description="user_id, set as 1 for this example"), to_number= Query(default="+6581633116", description="Enter your mobile here with country code, please do not spam SMS"), db: Session = Depends(get_db)):
+@router.post("/", response_model=schemas.TwoFA)
+def post_twofa(id: int = Query(default=1, description="user_id, set as 1 for this example"), to_number=Query(default="+6581633116", description="Enter your mobile here with country code, please do not spam SMS"), db: Session = Depends(get_db)):
     """
     1. Creates 2FA code
     2. Writes to DB
@@ -29,7 +29,7 @@ def twofa(id: int = Query(default=1, description="user_id, set as 1 for this exa
 
 
 @router.get("/verify", response_model=schemas.Verify)
-def twofa(code: int = Query(description="6digit OTP that was sent to your mobile"), id: int = Query(default=1, description="user_id, set as 1 for this example"), db: Session = Depends(get_db)):
+def verify_twofa(code: int = Query(description="6digit OTP that was sent to your mobile"), id: int = Query(default=1, description="user_id, set as 1 for this example"), db: Session = Depends(get_db)):
     """
     Verify OTP that u had created in the previous step
     Do note that user_id has to match and the OPT is only valid for 60seconds
