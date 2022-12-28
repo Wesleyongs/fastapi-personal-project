@@ -1,25 +1,90 @@
 {
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "inferenceAccelerators": [],
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:058654507205:task-definition/fastapi_personal_project:1",
     "containerDefinitions": [{
-        "name": "authentication",
-        "image": "ehttpd:2.4",
-        "resourceRequirements": null,
-        "essential": true,
+        "name": "fastapi_personal_project",
+        "image": "058654507205.dkr.ecr.ap-southeast-1.amazonaws.com/authentication-service",
+        "cpu": 0,
+        "links": [],
         "portMappings": [{
-            "hostPort": 80,
-            "protocol": "tcp",
-            "containerPort": 80
-        }]
+                "name": "fastapi_personal_project-80-tcp",
+                "containerPort": 80,
+                "hostPort": 0,
+                "protocol": "tcp",
+                "appProtocol": "http"
+            },
+            {
+                "name": "fastapi_personal_project-8000-tcp",
+                "containerPort": 8000,
+                "hostPort": 0,
+                "protocol": "tcp",
+                "appProtocol": "http"
+            }
+        ],
+        "essential": true,
+        "entryPoint": [],
+        "command": [],
+        "environment": [{
+                "name": "TWILIO_AUTH_TOKEN",
+                "value": "f4d0ae5808cda8047d419625617c7e87"
+            },
+            {
+                "name": "TWILIO_ACCOUNT_SID",
+                "value": "AC19d84261e339456f965f0bfa2f267c82"
+            }
+        ],
+        "environmentFiles": [],
+        "mountPoints": [],
+        "volumesFrom": [],
+        "secrets": [],
+        "dnsServers": [],
+        "dnsSearchDomains": [],
+        "extraHosts": [],
+        "dockerSecurityOptions": [],
+        "dockerLabels": {},
+        "ulimits": [],
+        "systemControls": []
     }],
+    "family": "fastapi_personal_project",
+    "executionRoleArn": "arn:aws:iam::058654507205:role/ecsTaskExecutionRole",
+    "networkMode": "bridge",
+    "revision": 1,
     "volumes": [],
-    "networkMode": "awsvpc",
-    "memory": "512",
-    "cpu": "256",
-    "executionRoleArn": "arn:aws:iam::183201325337:role/ecsTaskExecutionRole",
-    "family": "first-run-task-definition",
-    "taskRoleArn": "",
-    "placementConstraints": []
+    "status": "ACTIVE",
+    "requiresAttributes": [{
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2022-12-23T09:28:29.379Z",
+    "registeredBy": "arn:aws:iam::058654507205:root",
+    "tags": [{
+            "key": "ecs:taskDefinition:createdFrom",
+            "value": "ecs-console-v2"
+        },
+        {
+            "key": "ecs:taskDefinition:stackId",
+            "value": "arn:aws:cloudformation:ap-southeast-1:058654507205:stack/ECS-Console-V2-TaskDefinition-c82f85c1-34fe-463b-a810-6f5d2912f8f2/265d4e90-82a4-11ed-b0c9-020392be41f8"
+        }
+    ]
 }
