@@ -11,8 +11,8 @@ from src.database.database import Base, SessionLocal, engine, get_db
 
 # APIRouter creates path operations for item module
 router = APIRouter(
-    prefix="/twoFA",
-    tags=["twoFA"],
+    prefix="/TwoFA",
+    tags=["TwoFA"],
     responses={404: {"description": "Not found"}},
 )
 
@@ -31,6 +31,7 @@ def twofa(id: int = Query(default=1, description="user_id, set as 1 for this exa
 @router.get("/verify", response_model=schemas.Verify)
 def twofa(code: int = Query(description="6digit OTP that was sent to your mobile"), id: int = Query(default=1, description="user_id, set as 1 for this example"), db: Session = Depends(get_db)):
     """
-    Do note the OPT is only valid for 60seconds
+    Verify OTP that u had created in the previous step
+    Do note that user_id has to match and the OPT is only valid for 60seconds
     """
     return crud.verify_twofa(id, code, db)

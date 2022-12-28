@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:058654507205:task-definition/fastapi_personal_project:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-1:058654507205:task-definition/fastapi_personal_project",
     "containerDefinitions": [{
         "name": "authentication-service",
         "image": "058654507205.dkr.ecr.ap-southeast-1.amazonaws.com/authentication-service",
@@ -71,16 +71,5 @@
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
-    },
-    "registeredAt": "2022-12-23T09:28:29.379Z",
-    "registeredBy": "arn:aws:iam::058654507205:root",
-    "tags": [{
-            "key": "ecs:taskDefinition:createdFrom",
-            "value": "ecs-console-v2"
-        },
-        {
-            "key": "ecs:taskDefinition:stackId",
-            "value": "arn:aws:cloudformation:ap-southeast-1:058654507205:stack/ECS-Console-V2-TaskDefinition-c82f85c1-34fe-463b-a810-6f5d2912f8f2/265d4e90-82a4-11ed-b0c9-020392be41f8"
-        }
-    ]
+    }
 }
