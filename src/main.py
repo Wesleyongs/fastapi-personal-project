@@ -5,7 +5,30 @@ from fastapi.middleware.cors import CORSMiddleware
 # local
 from src.routes.api import router as api_router
 
-app = FastAPI()
+description = """
+This app is automatically built and deployed whenever a push is made to the github main branch. It consist of the following features
+
+## URL Shortener
+All transactions are stored in a persistent SQL table
+
+## 2FA
+You will be able to:
+
+* **Generate 2FA** (_Twillio SMS only works with registered mobile numbers_).
+* **Authenticate** (_Generated 2FAs are valid for 60s_).
+"""
+app = FastAPI(title="Python Backend Microservices",
+              description=description,
+              version="0.0.1",
+              contact={
+                  "name": "Wesley Ong",
+                  "url": "https://wesleyongs.com",
+                  "email": "wesleyispro@gmail.com",
+              },
+              license_info={
+                  "name": "GitHub Repo",
+                  "url": "https://github.com/Wesleyongs/fastapi-personal-project", },)
+
 
 app.include_router(api_router)
 
@@ -18,6 +41,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.get("/")
 async def root():
