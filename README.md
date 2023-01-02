@@ -1,11 +1,10 @@
 # Python FastAPI personal project demos
 ## Consist of the following
 1. <b>URL shortener</b>
-> Demonstrates CRUD operations to a persistent postgres db hosted on aws RDS
 2. <b>2FA genrator and validator</b>
-> Demonstrates ability to work with APIs (twillio) to build backend services
 
-## Also includes
+## Demonstrates
+- Ability to write python backend CRUD operations to a persistent postgres db hosted on aws RDS
 - CICD pipeline to deploy on aws EC2 after every commit to main branch
 - [Demo](http://ec2-18-140-244-94.ap-southeast-1.compute.amazonaws.com/docs)
 
