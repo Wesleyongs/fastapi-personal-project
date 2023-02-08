@@ -18,7 +18,7 @@ import src.routes.nlphub.models as models
 load_dotenv()
 
 
-# Create tokenizer
+""" # Create tokenizer
 tokenizer = SenticGCNBertTokenizer.from_pretrained("bert-base-uncased")
 
 # Create embedding model
@@ -47,7 +47,7 @@ model = SenticGCNBertModel.from_pretrained(
     "https://storage.googleapis.com/sgnlp/models/sentic_gcn/senticgcn_bert/pytorch_model.bin", config=config
 )
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("en_core_web_md") """
 
 
 def get_nouns(sentence):

@@ -15,11 +15,11 @@ clean: ## Remove general artifact files
 
 venv: ## Create virtual environment if venv directory not present
 	`which python3.8` -m venv venv
-	venv/Scripts/activate.bat
-	venv/Scripts/pip install -r requirements.txt
+	venv\Scripts\activate.bat
+	venv\Scripts\pip install -r requirements.txt
 
 run: dev ## Run with dev dependencies
-	.\venv\Scripts\activate
+	\venv\Scripts\activate
 	python -m src.main
 
 deploy: dev ## Run with dev dependencies
